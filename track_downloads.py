@@ -10,7 +10,7 @@ from watchdog.events import FileSystemEventHandler
 def main():
     try:
         while True:
-            time.sleep(3)
+            time.sleep(10)
             os.system('python3 sorter.py')
     except KeyboardInterrupt:
         observer.stop()
