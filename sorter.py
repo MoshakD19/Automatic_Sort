@@ -15,10 +15,19 @@ for f in os.listdir():
     elif ext == '.jpeg':
         shutil.move(f'/Users/shakurduale/Downloads/{f}', f'/Users/shakurduale/Pictures/jpeg/{f}')
 
+    elif ext == '.gif':
+        shutil.move(f'/Users/shakurduale/Downloads/{f}', f'/Users/shakurduale/Pictures/gifs/{f}')
+
     elif ext == '.py':
         shutil.move(f'/Users/shakurduale/Downloads/{f}', f'/Users/shakurduale/Documents/Python/{f}')
 
-    elif ext == '.docx' or ext == '.pdf' or ext == '.doc':
+    elif f == '__pycache__':
+        shutil.rmtree(f"/Users/shakurduale/Downloads/{f}")
+
+    elif ext == '.textClipping':
+        os.remove(f"/Users/shakurduale/Downloads/{f}")
+
+    elif ext == '.docx' or ext == '.pdf' or ext == '.doc' or ext == '.dotx':
         shutil.move(f'/Users/shakurduale/Downloads/{f}', f'/Users/shakurduale/Documents/Docs_and_pdfs/{f}')
 
     elif ext == '.html' or ext == '.css' or ext == '.htm':
@@ -54,8 +63,10 @@ for f in os.listdir():
     elif ext == '.mdj':
         shutil.move(f'/Users/shakurduale/Downloads/{f}', f'/Users/shakurduale/Documents/UML/{f}')
 
-    elif len(ext) == 0:
-        shutil.move(f'/Users/shakurduale/Downloads/{f}', f'/Users/shakurduale/Documents/Other/{f}')
+    elif os.path.isdir(f"/Users/shakurduale/Downloads/{f}"):
+        if len(os.listdir(f"/Users/shakurduale/Downloads/{f}")) == 0:
+            shutil.rmtree(f"/Users/shakurduale/Downloads/{f}")
+        shutil.move(f'/Users/shakurduale/Downloads/{f}', f'/Users/shakurduale/Documents/Folders/{f}')
 
     elif ext == '.app':
         shutil.move(f'/Users/shakurduale/Downloads/{f}', f'/Users/shakurduale/Documents/Apps/{f}')
@@ -68,3 +79,6 @@ for f in os.listdir():
 
     elif ext == '.download':
         shutil.move(f'/Users/shakurduale/Downloads/{f}', f'/Users/shakurduale/Documents/download_extension/{f}')
+
+    elif len(ext) == 0:
+        shutil.move(f'/Users/shakurduale/Downloads/{f}', f'/Users/shakurduale/Documents/Other/{f}')
